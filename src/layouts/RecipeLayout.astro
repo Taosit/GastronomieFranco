@@ -51,7 +51,7 @@ const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
       <section class="video-section">
         <h2>Video</h2>
         <div class="video-container">
-          <video src={frontmatter.video} controls></video>
+          <video src={`/videos/${frontmatter.video}`} controls></video>
         </div>
       </section>
       <section>

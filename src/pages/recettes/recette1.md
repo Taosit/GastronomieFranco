@@ -10,8 +10,8 @@ info:
   region: "France"
   temps: "40 mins"
   saveur: "Doux"
-image: "../../src/assets/apple-pie.jpeg"
-video: "../../src/assets/recette.mp4"
+image: "apple-pie.jpeg"
+video: "recette.mp4"
 ---
 
 Recette originale: https://www.troisfoisparjour.com/fr/recettes/desserts/tartes-et-patisseries/tarte-aux-pommes-classique/

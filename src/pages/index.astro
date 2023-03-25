@@ -13,11 +13,11 @@ const recipes = allRecipes.map((recipe) => {
   return {
     title,
     description,
-    image,
+    image: `/images/${image}`,
     href: `/recettes/${uri}`,
   };
 });
-import reflexions from "../assets/reflexions.mp4";
+import reflexions from "/videos/reflexions.mp4";
 ---
 
 <Layout title="Gastronomie Franco">
