@@ -1,81 +1,100 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+const allRecipes = await Astro.glob("../pages/recettes/*.md");
+
+const recipes = allRecipes.map((recipe) => {
+  const {
+    uri,
+    title,
+    shortDescription: description,
+    image,
+  } = recipe.frontmatter;
+  return {
+    title,
+    description,
+    image,
+    href: `/recettes/${uri}`,
+  };
+});
+import reflexions from "../assets/reflexions.mp4";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+<Layout title="Gastronomie Franco">
+  <main>
+    <header>
+      <h1>Gastronomie Franco</h1>
+    </header>
+    <div class="main-container">
+      <p class="intro">
+        Amy, Jingxuan, kim et Sophie allons faire un tour de la gastronomie de 4
+        regions francophones, la France, le Maroc, le Martinique et l’Acadie en
+        essayant de cuisiner un plat d’origine de chacune de ces regions. On va
+        prendre en video nos preparations, nos discussions, et nos produits
+        finaux, echues ou reussis. A la fin, on va presenter toutes les quatre
+        nos reflexions par rapport a cette experience enrichissante. Venez voir!
+      </p>
+      <section>
+        <h2>Nos Plats</h2>
+        <div class="grid-container">
+          {
+            recipes.map((recipe) => {
+              return <Card {...recipe} />;
+            })
+          }
+        </div>
+      </section>
+      <section>
+        <h2>Reflexions</h2>
+        <p class="reflexion-intro">
+          Apres on a fait chacun notre plat, on s’est reunit pour discuter ce
+          qu’on a appris ainsi que nos reflexions.
+        </p>
+        <div class="video-container">
+          <video src={reflexions} controls></video>
+        </div>
+      </section>
+    </div>
+  </main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+  header {
+    height: 30vh;
+    background: rgb(255, 106, 205);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 106, 205, 1) 0%,
+      rgba(255, 110, 110, 1) 40%,
+      rgba(254, 188, 95, 1) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .intro {
+    margin-top: 2rem;
+  }
+  .intro::first-letter {
+    font-size: 300%;
+    color: var(--text-variant);
+    margin-right: 4px;
+    line-height: 1rem;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .grid-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem 4rem;
+    }
+  }
+
+  .reflexion-intro {
+    margin-top: 1rem;
+  }
 </style>

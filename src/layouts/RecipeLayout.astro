@@ -1,0 +1,121 @@
+---
+export interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    chef: string;
+    sousChef: string;
+    info: { [key: string]: string };
+    video: string;
+  };
+}
+
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+
+const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
+---
+
+<Layout title={frontmatter.title}>
+  <main>
+    <div class="main-container">
+      <header>
+        <a class="back-link" href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            viewBox="0 96 960 960"
+            width="48"
+            ><path d="M400 976 0 576l400-400 56 57-343 343 343 343-56 57Z"
+            ></path></svg
+          >
+          <p>Back</p></a
+        >
+        <h1 class="title">{frontmatter.title}</h1>
+        <p class="chef">
+          <span class="cook-icon">👩‍🍳</span>
+          {frontmatter.chef} et {frontmatter.sousChef}
+        </p>
+      </header>
+      <p class="description">{frontmatter.description}</p>
+      <div class="meta">
+        {
+          Object.entries(frontmatter.info).map(([key, value]) => (
+            <div class="info">
+              <label>{capitalize(key)}</label>
+              <p>{capitalize(value)}</p>
+            </div>
+          ))
+        }
+      </div>
+      <section class="video-section">
+        <h2>Video</h2>
+        <div class="video-container">
+          <video src={frontmatter.video} controls></video>
+        </div>
+      </section>
+      <section>
+        <h2>Resources</h2>
+        <slot />
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .back-link {
+    margin-top: 1rem;
+    color: var(--text-medium);
+    display: flex;
+    align-items: center;
+  }
+  .back-link svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    fill: var(--text-medium);
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  .chef {
+    margin-top: 0.5rem;
+    align-self: flex-end;
+    color: var(--text-light);
+    font-size: 1.2rem;
+  }
+  .cook-icon {
+    font-size: 2rem;
+  }
+  .description {
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--text-medium);
+  }
+  .meta {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .info p {
+    margin-top: 0.25rem;
+    color: var(--text-variant);
+    font-size: 1.5rem;
+  }
+  .video-section {
+    margin-top: 2rem;
+  }
+  .video-container {
+    margin-top: 2rem;
+  }
+  @media (min-width: 768px) {
+    .description {
+      max-width: 80%;
+      margin: 2rem auto 0;
+    }
+  }
+</style>

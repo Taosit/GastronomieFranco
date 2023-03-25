@@ -1,63 +1,53 @@
 ---
 export interface Props {
-	title: string;
-	body: string;
-	href: string;
+  href: string;
+  title: string;
+  image: string;
+  description: string;
 }
 
-const { href, title, body } = Astro.props;
+const { href, title, image, description } = Astro.props;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
+<article class="card">
+  <a href={href}>
+    <h3 class="card-title">
+      {title}
+    </h3>
+  </a>
+  <a class="image-container" href={href}>
+    <img src={image} alt={title} />
+  </a>
+  <p class="description">{description}</p>
+</article>
 <style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 0.25rem;
-		background-color: white;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 0.6rem;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-	}
-
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: 1rem 1.3rem;
-		border-radius: 0.35rem;
-		color: #111;
-		background-color: white;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-		color: #444;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent));
-	}
+  a {
+    color: inherit;
+  }
+  .card-title {
+    margin-bottom: 1rem;
+    transition: 0.5s;
+  }
+  .card-title:hover {
+    color: rgb(148, 66, 0);
+  }
+  .image-container {
+    display: block;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    position: relative;
+  }
+  .image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .description {
+    margin-top: 0.25rem;
+  }
 </style>
