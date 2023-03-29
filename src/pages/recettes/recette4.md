@@ -11,7 +11,7 @@ info:
   temps: "40 mins"
   saveur: "Doux"
 image: "apple-pie.jpeg"
-video: "recette.mp4"
+video: "5Gq5Xr3XoaM"
 ---
 
 Recette originale: https://www.troisfoisparjour.com/fr/recettes/desserts/tartes-et-patisseries/tarte-aux-pommes-classique/
