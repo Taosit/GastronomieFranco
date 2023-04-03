@@ -14,10 +14,11 @@ import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
+const descriptionParagraphs = frontmatter.description.split("\n");
 ---
 
 <Layout title={frontmatter.title}>
-  <main>
+  <main class="main">
     <div class="main-container">
       <header>
         <a class="back-link" href="/">
@@ -39,7 +40,9 @@ const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
           }
         </p>
       </header>
-      <p class="description">{frontmatter.description}</p>
+      <div class="description">
+        {descriptionParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
       <div class="meta">
         {
           Object.entries(frontmatter.info).map(([key, value]) => (
@@ -70,6 +73,9 @@ const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 </Layout>
 
 <style>
+  img {
+    max-width: 80vw;
+  }
   .back-link {
     margin-top: 1rem;
     color: var(--text-medium);
@@ -102,6 +108,9 @@ const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
     margin-top: 2rem;
     text-align: center;
     color: var(--text-medium);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
   .meta {
     margin-top: 2rem;

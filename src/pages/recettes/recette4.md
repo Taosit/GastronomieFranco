@@ -7,8 +7,8 @@ description: "Une bonne tarte aux pommes sans flafla comme on les aime! Pas beso
 chef: "Jingxuan"
 sousChef: "Kim"
 info:
-  region: "France"
-  temps: "40 mins"
+  région: "France"
+  durée: "40 mins"
   saveur: "Doux"
 image: "apple-pie.jpeg"
 video: "5Gq5Xr3XoaM"
