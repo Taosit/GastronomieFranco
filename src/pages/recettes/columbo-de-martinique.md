@@ -3,15 +3,17 @@ layout: ../../layouts/RecipeLayout.astro
 title: "Columbo de Martinique avec Sophie"
 uri: "columbo-de-martinique"
 shortDescription: "Description courte du columbo de Martinique "
-description: "Une bonne tarte aux pommes sans flafla comme on les aime! Pas besoin d’ajouter grand-chose lorsqu’une recette est déjà gagnante! On aime bien la cuisiner avec de la cannelle (on ne change pas un classique), mais vous pouvez aussi varier et vous inspirer de la petite liste d’épices qu’on vous suggère dans les trucs et astuces."
+description: "Voici un épisode avec Sophie comme chef et Amy comme  sous-chef qui cuisinent le repas Colombo de Martinique. Il vient du Martinique, un île et territoriale d’outre-mer de la France dans la mer des Caraïbes orientales. Martinique a un population sous 400,000 personnes et c’est connu pour les plages avec sable noir avec l’origine volcanique. Il est découvert par Christophe Colomb en 1505 et il devient une colonie française sous roi Louis XIII. Colombo est un repas célèbre dans les Caraïbes françaises, comme Guadeloupe et St. Barts, qui utilisent le même mélange d' épices. Ce repas inclut la cuisse de poulet, en sauce épaissit avec légumes, et il sert avec un accompagnement du riz. 
+."
 chef: "Sophie"
+sousChef: "Amy"
 info:
   région: "Martinique"
   durée: "45 mins"
   type: "Entrée"
   saveur: "Salé"
 image: "columbo_de_martinique.png"
-video: "5Gq5Xr3XoaM"
+video: "tFFtSYyxb9M"
 ---
 
 ### Plus De Photo!
