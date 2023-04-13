@@ -18,9 +18,11 @@ info:
   région: "La Réunion"
   durée: "1h30"
   saveur: "Salé"
-image: "apple-pie.jpeg"
+image: "samoussas.jpeg"
 video: "VH3rgChLvfo"
 ---
+
+### FAQ
 
 <h4 style="margin-top:0.5rem;margin-bottom:0.5rem;font-weight:600">Qu’est ce-que c’est l’importance culturelle de ce repas ?</h4>
 
